@@ -1,0 +1,3 @@
+user: aster
+pass: Logo1234
+email: faeyntt@gmail.com
