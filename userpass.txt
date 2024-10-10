@@ -1,3 +1,11 @@
 user: aster
 pass: Logo1234
 email: faeyntt@gmail.com
+
+Test:
+user: testUser
+pass: a1s2d3f4!
+
+Test2:
+user:testUser2
+pass:a1s2d3f4!
