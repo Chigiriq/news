@@ -1,0 +1,13 @@
+using django_pony_express (dpe)
+
+create a newsletter
+
+viewer will enter email into a crispy 
+form located in footer
+
+create a depe factory to send out email to all emails
+https://django-pony-express.readthedocs.io/en/latest/features/factories.html
+
+Note: this requires only an email, no user creation needed
+
+this is going to be agony i bet, yippee
