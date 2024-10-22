@@ -5,7 +5,9 @@ from django.views.generic.edit import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+
 from .models import Article
+# from .forms import CommentForm
 
 
 class ArticleListView(LoginRequiredMixin, ListView):
@@ -15,6 +17,12 @@ class ArticleListView(LoginRequiredMixin, ListView):
 class ArticleDetailView(LoginRequiredMixin, DetailView): # new
     model = Article
     template_name = "article_detail.html"
+
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["form"] = CommentForm()
+    #     return context
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): # new
     model = Article

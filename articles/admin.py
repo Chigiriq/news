@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article
+from .models import Article, Comment
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = [
@@ -8,5 +8,20 @@ class ArticleAdmin(admin.ModelAdmin):
         "author",
     ]
 
+class CommentInline(admin.TabularInline):
+    model = Comment
+    extra = 0
+
+class ArticleAdmin(admin.ModelAdmin):
+    inlines = [
+        CommentInline,
+    ]
+    list_display = [
+        "title",
+        "body",
+        "author",
+    ]
+
 # admin.site.register(Article)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comment)
