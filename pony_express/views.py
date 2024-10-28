@@ -4,13 +4,8 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from pony_express.models import OutgoingEmail
 from django.http import HttpResponse
-
-# pony_express/views.py
-
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
-from django.conf import settings
-from pony_express.models import OutgoingEmail  # Adjust based on your structure
+from django.shortcuts import render
+from articles.models import Article
 
 def send_newsletter(recipients):
     subject = "Your Monthly Newsletter"
@@ -21,7 +16,7 @@ def send_newsletter(recipients):
     # Create the email object
     email = EmailMessage(
         subject=subject,
-        body=content,  # This should already be the rendered HTML
+        body=content,
         from_email=settings.DEFAULT_FROM_EMAIL,
         to=recipients,
     )
@@ -36,12 +31,12 @@ def send_newsletter(recipients):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
-    # Print the email details to the console for debugging
+    #console printing
     print("Email Subject:", email.subject)
-    # print("Email Body:", email.body)  #all html
+    # print("Email Body:", email.body)  all html if uncommented
     print("Recipients:", email.to)
 
-    # Save the email record (if needed)
+    #Save email
     outgoing_email = OutgoingEmail(
         to=", ".join(recipients),
         subject=subject,
@@ -58,10 +53,17 @@ def send_notification(request):
         message="Thank you for signing up!"
     )
 
-
-# handle email sending logic here
 def send_newsletter_view(request):
-    recipients = ['recipient1@example.com', 'recipient2@example.com']  # Replace with actual recipient list
+    recipients = ['recipient1@example.com', 'recipient2@example.com']
+    #above would be replaced with users with emails
     send_newsletter(recipients)
     return HttpResponse("Newsletter details printed to console!")
 
+
+def newsletter_view(request):
+    articles = Article.objects.all()
+    context = {
+        'content': 'Here is the latest content for you!',
+        'article_list': articles
+    }
+    return render(request, 'newsletter.html', context)
