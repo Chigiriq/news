@@ -25,4 +25,5 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"), # new
     path("articles/", include("articles.urls")),
     path("", include("pages.urls")),
+    path('pony_express/', include('pony_express.urls')),
 ]

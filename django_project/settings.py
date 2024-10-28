@@ -143,3 +143,14 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # change to mst later
 TIME_ZONE = "America/New_York"
+
+# Email settings
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'  # Replace with your SMTP server
+EMAIL_PORT = 587  # Typical port for TLS
+EMAIL_USE_TLS = True  # Use TLS
+EMAIL_HOST_USER = 'your_email@example.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'your_password'  # Your email password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default sender email
