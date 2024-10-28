@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     #3rd party
     "crispy_forms",
     "crispy_bootstrap5",
+    "django_pony_express",
     #Local
     "accounts",
     "pages",
     "articles",
+    "pony_express",
 ]
 
 MIDDLEWARE = [
